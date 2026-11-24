@@ -6,11 +6,10 @@ health-checked with probes, and autoscaled by an HPA.
 
 ## Architecture
 
-![Architecture diagram](docs/architecture.drawio.png)
+![Architecture diagram](docs/architecture.svg)
 
-The diagram source is [docs/architecture.drawio](docs/architecture.drawio). Open it in
-[draw.io](https://app.diagrams.net) or the VS Code Draw.io Integration extension to edit it. The PNG
-also has the diagram embedded, so you can open the PNG in draw.io and edit it there too.
+The editable source is [docs/architecture.drawio](docs/architecture.drawio). Open it in
+[draw.io](https://app.diagrams.net) or the VS Code Draw.io Integration extension.
 
 | Layer | What's built | File |
 |---|---|---|
@@ -138,7 +137,7 @@ stay `Pending` until you add a Cluster Autoscaler or Karpenter.
 │   └── README.md
 └── docs/
     ├── architecture.drawio      # editable diagram source
-    └── architecture.drawio.png  # exported image shown above
+    └── architecture.svg         # image shown above (GitHub renders it)
 ```
 
 > **Cost note:** the NAT Gateway, the EKS control plane and the nodes are billed by the hour.
