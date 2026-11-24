@@ -1,0 +1,42 @@
+# ---------- Terraform ----------
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Variable files often hold secrets / account-specific values
+*.tfvars
+*.tfvars.json
+!example.tfvars
+
+# ---------- Secrets & credentials ----------
+.env
+.env.*
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+credentials
+.aws/
+kubeconfig
+*.kubeconfig
+
+# ---------- OS / editor ----------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~

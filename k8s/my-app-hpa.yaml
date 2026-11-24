@@ -1,0 +1,32 @@
+# Scales my-app between 2 and 6 pods.
+# Scales out when average CPU OR memory use reaches 70% of the pods' *requests*
+# (cpu: 200m, memory: 128Mi in my-app-deployment.yaml).
+# Needs metrics-server in the cluster.
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: my-app
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: my-app
+  minReplicas: 2 # keep 1 per AZ (topology spread)
+  maxReplicas: 6
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 70
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 30 # wait 5 min of low usage before removing pods
